@@ -20,6 +20,9 @@
     state: present
   when: ansible_os_family == 'Debian'
 
+- name: Copy Samba and share configurations
+  template: src=smb.conf dest=/etc/samba/smb.conf
+
 - name: Ensure Samba is running and set to start on boot.
   service:
     name: "{{ samba_daemon }}"
